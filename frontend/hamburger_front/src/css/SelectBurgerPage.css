@@ -1,0 +1,48 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.content {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    justify-content: space-between;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.left-ingredients {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 90vh; /* 화면 높이의 90%로 제한 */
+    overflow-y: auto; /* 스크롤 추가 */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.ingredient {
+    display: flex;
+    flex-direction: row; /* 이미지와 셀렉트 박스를 가로로 배치 */
+    align-items: center;
+    margin-bottom: 15px; /* 항목 간의 간격 */
+}
+
+.ingredient-img {
+    width: 500px; /* 이미지 크기 */
+    height: 80px; /* 이미지 높이 */
+    margin-right: 10px; /* 이미지와 셀렉트박스 사이 간격 */
+}
+
+.ingredient-select {
+    padding: 5px 10px;
+    font-size: 14px;
+    transform: translateY(-35px);
+}

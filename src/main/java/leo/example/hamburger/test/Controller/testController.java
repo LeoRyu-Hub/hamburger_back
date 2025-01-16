@@ -22,15 +22,7 @@ public class testController {
     @RequestMapping("/test")
 	@ResponseBody
 	public List<testVo> test(@ModelAttribute testVo vo) throws Exception{
-        
         return service.selectManager();
-    }
-
-    @GetMapping("/api/data")
-    @ResponseBody
-    public String test() {
-        return "Hello, world!";
-    }
-    
+    } 
 
 }
