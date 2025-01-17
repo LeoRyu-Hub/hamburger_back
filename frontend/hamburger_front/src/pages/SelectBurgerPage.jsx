@@ -15,7 +15,7 @@ function SelectBurgerPage() {
         { name: 'pickle', img: '/burger_ingredient/pickle.jpg', option: ['넣기', '빼기'] },
         { name: 'cheese', img: '/burger_ingredient/cheese.jpg', option: ['넣기', '빼기'] },
         { name: 'tomato', img: '/burger_ingredient/tomato.jpg', option: ['넣기', '빼기'] },
-        { name: 'patty', img: '/burger_ingredient/patty.jpg', option: ['소고기', '치킨'] },
+        { name: 'patty', img: '/burger_ingredient/patty.jpg', option: ['소고기', '치킨', '새우'] },
         { name: 'sauce', img: '/burger_ingredient/sauce.jpg', option: ['마요네즈', '케쳡'] },
         { name: 'bun_down', img: '/burger_ingredient/burgerbun_down.jpg', option: [] }
     ];

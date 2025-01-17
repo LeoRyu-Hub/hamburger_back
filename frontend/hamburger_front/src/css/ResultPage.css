@@ -46,3 +46,8 @@
     color: #333;
     margin-bottom: 20px;
 }
+
+.highlight {
+    color: red;
+    font-weight: bold;
+}
