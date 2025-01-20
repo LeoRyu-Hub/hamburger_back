@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import leo.example.hamburger.test.Service.testService;
 import leo.example.hamburger.vo.test.testVo;
 import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller

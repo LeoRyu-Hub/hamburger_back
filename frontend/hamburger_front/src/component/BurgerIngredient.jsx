@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function BurgerIngredient({ ingredient }) {
+function BurgerIngredient({ ingredient, onSelect  }) {
 
     //console.log(ingredient);
 
@@ -8,14 +8,13 @@ function BurgerIngredient({ ingredient }) {
 
     const isGrayScale = selectedOption === '빼기';
 
-    const pattyImg = () => {
+    const selectedImg = () => {
         if (ingredient.name === 'patty') {
             if (selectedOption === '소고기') {
                 return '/burger_ingredient/patty_beef.jpg';
             } else if (selectedOption === '치킨') {
                 return '/burger_ingredient/patty_chiken.jpg';
-            }
-            else if (selectedOption === '새우') {
+            } else if (selectedOption === '새우') {
                 return '/burger_ingredient/patty_prawn.jpg';
             }
         }
@@ -33,12 +32,19 @@ function BurgerIngredient({ ingredient }) {
     };
 
     //console.log(selectedOption);
-    //console.log(ingredient);
+    
+    //console.log(onSelect);
+    const handleSelectChange = (e) => {
+        const newOption = e.target.value;
+        setOption(newOption);  // 선택된 옵션을 상태에 저장
+        //console.log(newOption);
+        onSelect(ingredient.name, newOption);  // 부모 컴포넌트에 옵션 변경 알리기
+    };
 
     return (
         <div className="ingredient-container">
             <img className="ingredient-img"
-                src={pattyImg()}
+                src={selectedImg()}
                 alt={ingredient.name}
                 style={{ filter: isGrayScale ? 'grayscale(100%)' : 'none' }}
             />
@@ -46,7 +52,7 @@ function BurgerIngredient({ ingredient }) {
             {ingredient.option.length > 0 && (
                 <select
                     value={selectedOption}
-                    onChange={(e) => setOption(e.target.value)}
+                    onChange={handleSelectChange}
                     className="ingredient-select"
 
                 >

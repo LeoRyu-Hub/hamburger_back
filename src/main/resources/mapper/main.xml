@@ -1,0 +1,24 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="leo.example.hamburger.main.Dao.mainDao">
+
+	<resultMap type = "leo.example.hamburger.vo.burger.burgerVO" id = "burgerMap">
+        <result column = "BURGER_CODE"  property = "burgerCode"/>
+        <result column = "BURGER_NAME"  property = "burgerName"/>
+        <result column = "BURGER_IMG"   property = "burgerImg"/>
+        <result column = "ONION"        property = "onion"/>
+        <result column = "LETTUCE"      property = "lettuce"/>
+        <result column = "PICKLE"       property = "pickle"/>
+        <result column = "CHEESE"       property = "cheese"/>
+        <result column = "TOMATO"       property = "tomato"/>
+        <result column = "PATTY"        property = "patty"/>
+        <result column = "SAUCE"        property = "sauce"/>
+	</resultMap>
+
+    <insert id="insertBurger">
+        INSERT INTO TB_BURGER
+            (BURGER_CODE, BURGER_NAME, BURGER_IMG, ONION, LETTUCE, PICKLE, CHEESE, TOMATO, PATTY, SAUCE)
+        VALUES
+            ('01','빅맥', '1111', #{onion}, #{lettuce}, #{pickle}, #{cheese}, #{tomato}, #{patty}, #{sauce})
+    </insert>
+
+</mapper>	
