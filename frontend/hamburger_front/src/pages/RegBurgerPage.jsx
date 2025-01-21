@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import '../css/SelectBurgerPage.css';
 import BurgerIngredient from "../component/BurgerIngredient";
@@ -8,6 +8,13 @@ import axios from "axios";
 function RegBurgerPage() {
 
     const navigate = useNavigate();
+
+    //서버로 보낼 데이터(버거 디테일)
+    const [burgerDetails, setBurgerDetails] = useState({
+        brandName: '',
+        burgerName: '',
+        burgerImg: null,
+    });
 
     const ingredients = [
         { name: 'bun_up', img: '/burger_ingredient/burgerbun_up.jpg', option: [] },
@@ -21,7 +28,7 @@ function RegBurgerPage() {
         { name: 'bun_down', img: '/burger_ingredient/burgerbun_down.jpg', option: [] }
     ];
 
-    //서버로 보낼 데이터 배열
+    //서버로 보낼 데이터(재료)
     const [selectedIngredients, setSelectedIngredients] = useState({
         onion: '넣기',
         lettuce: '넣기',
@@ -32,11 +39,28 @@ function RegBurgerPage() {
         sauce: '마요네즈',
     });
 
-     // 재료 옵션 선택 처리 함수
-     const handleIngredientSelect = (ingredientName, option) => {
+    //재료 옵션 선택 처리 함수
+    const handleIngredientSelect = (ingredientName, option) => {
         setSelectedIngredients(prevState => ({
             ...prevState,
             [ingredientName]: option
+        }));
+    };
+
+    //브랜드 이름과 버거 이름 입력 처리 함수
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setBurgerDetails(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0]; // 사용자가 선택한 파일
+        setBurgerDetails((prevState) => ({
+            ...prevState,
+            burgerImg: file,
         }));
     };
 
@@ -44,12 +68,34 @@ function RegBurgerPage() {
 
     // 등록완료 버튼 클릭 시 서버로 데이터 전송
     const handleSubmit = async () => {
-        console.log(selectedIngredients);
+
+        const formData = new FormData();
+
+        formData.append('brandName', burgerDetails.brandName);
+        formData.append('burgerName', burgerDetails.burgerName);
+        formData.append('onion', selectedIngredients.onion);
+        formData.append('lettuce', selectedIngredients.lettuce);
+        formData.append('pickle', selectedIngredients.pickle);
+        formData.append('cheese', selectedIngredients.cheese);
+        formData.append('tomato', selectedIngredients.tomato);
+        formData.append('patty', selectedIngredients.patty);
+        formData.append('sauce', selectedIngredients.sauce);
+        formData.append('burgerImg', burgerDetails.burgerImg);
+
+        /*
+        for (let [key, value] of formData.entries()) {
+            console.log(key, value);
+        }
+        */
 
         try {
-            const response = await axios.post('/burger/reg', selectedIngredients);
+            const response = await axios.post('/burger/reg', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
             console.log('Burger registered successfully:', response.data);
-            //navigate("/"); // 성공 후 이동
+            //navigate("/"); 성공 후 이동
         } catch (error) {
             console.error('Error registering burger:', error);
         }
@@ -67,6 +113,30 @@ function RegBurgerPage() {
                         />
                     ))}
                 </div>
+                <div className="burger-details">
+                    <input
+                        type="text"
+                        name="brandName"
+                        placeholder="브랜드 이름"
+                        value={burgerDetails.brandName}
+                        onChange={handleInputChange}
+                    />
+                    <input
+                        type="text"
+                        name="burgerName"
+                        placeholder="버거 이름"
+                        value={burgerDetails.burgerName}
+                        onChange={handleInputChange}
+                    />
+                </div>
+
+                <input
+                    type="file"
+                    name="burgerImg"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                />
+
                 <div className="button-container">
                     <Button
                         onClick={() => navigate("/")}

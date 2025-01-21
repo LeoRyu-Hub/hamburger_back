@@ -46,3 +46,21 @@
     font-size: 14px;
     transform: translateY(-35px);
 }
+
+.burger-details {
+    display: flex;
+    justify-content: space-between; /* 양쪽 끝에 배치 */
+    gap: 10px; /* 두 input 사이에 간격을 추가 */
+}
+
+.burger-details input {
+    flex: 1; /* 각 input 요소가 동일한 너비를 갖도록 설정 */
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.burger-details input::placeholder {
+    color: #888;
+}
