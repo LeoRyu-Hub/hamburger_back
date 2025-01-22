@@ -4,7 +4,7 @@
 	<resultMap type = "leo.example.hamburger.vo.burger.burgerVO" id = "burgerMap">
         <result column = "BRAND_NAME"   property = "brandName"/>
         <result column = "BURGER_NAME"  property = "burgerName"/>
-        <result column = "BURGER_IMG"   property = "burgerImg"/>
+        <result column = "BURGER_IMG"   property = "burgerUrl"/>
         <result column = "ONION"        property = "onion"/>
         <result column = "LETTUCE"      property = "lettuce"/>
         <result column = "PICKLE"       property = "pickle"/>
@@ -18,7 +18,19 @@
         INSERT INTO TB_BURGER
             (BRAND_NAME, BURGER_NAME, BURGER_IMG, ONION, LETTUCE, PICKLE, CHEESE, TOMATO, PATTY, SAUCE)
         VALUES
-            (#{brandName}, #{burgerName}, '1111', #{onion}, #{lettuce}, #{pickle}, #{cheese}, #{tomato}, #{patty}, #{sauce})
+            (#{brandName}, #{burgerName}, #{burgerUrl}, #{onion}, #{lettuce}, #{pickle}, #{cheese}, #{tomato}, #{patty}, #{sauce})
     </insert>
+
+    <select id="selectBurger" resultMap = "burgerMap">
+        SELECT BURGER_NAME, BURGER_IMG, BRAND_NAME FROM TB_BURGER
+        WHERE 1=1
+        AND ONION = #{onion}
+        AND LETTUCE = #{lettuce}
+        AND PICKLE = #{pickle} 
+        AND CHEESE = #{cheese}
+        AND TOMATO = #{tomato}
+        AND PATTY =  #{patty}
+        AND SAUCE =  #{sauce}
+    </select>
 
 </mapper>	
