@@ -24,7 +24,7 @@ function RegBurgerPage() {
         { name: 'cheese', img: '/burger_ingredient/cheese.jpg', option: ['넣기', '빼기'] },
         { name: 'tomato', img: '/burger_ingredient/tomato.jpg', option: ['넣기', '빼기'] },
         { name: 'patty', img: '/burger_ingredient/patty.jpg', option: ['소고기', '치킨', '새우'] },
-        { name: 'sauce', img: '/burger_ingredient/sauce.jpg', option: ['마요네즈', '케쳡'] },
+        { name: 'sauce', img: '/burger_ingredient/sauce.jpg', option: ['마요네즈', '케쳡','사우전드 드레싱'] },
         { name: 'bun_down', img: '/burger_ingredient/burgerbun_down.jpg', option: [] }
     ];
 
@@ -94,10 +94,12 @@ function RegBurgerPage() {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            console.log('Burger registered successfully:', response.data);
+            //console.log('Burger registered successfully:', response.data);
             //navigate("/"); 성공 후 이동
+            alert("등록이 완료되었습니다!");
         } catch (error) {
-            console.error('Error registering burger:', error);
+            alert("에러발생");
+            //console.error('Error registering burger:', error);
         }
     };
 

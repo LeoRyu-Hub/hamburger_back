@@ -20,10 +20,12 @@ function BurgerIngredient({ ingredient, onSelect  }) {
         }
 
         if (ingredient.name === 'sauce') {
-            if (selectedOption === '마요네즈') {
+            if (selectedOption === '마요네즈' ) {
                 return '/burger_ingredient/sauce.jpg';
             } else if (selectedOption === '케쳡') {
                 return '/burger_ingredient/sauce_ketchup.jpg';
+            } else if (selectedOption === '사우전드 드레싱') {
+                return '/burger_ingredient/sauce_sou.jpg';
             }
         }
 
