@@ -1,5 +1,7 @@
 package leo.example.hamburger.vo.burger;
 
+import java.util.List;
+
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -7,11 +9,14 @@ import lombok.Data;
 
 @Data
 public class burgerVO {
-    
-    private String burgerName;git log
 
-   // @JsonIgnore
-    private String burgerImg;
+    @JsonIgnore
+    private MultipartFile burgerImg;
+
+    private String burgerUrl;
+    
+    private List<burgerVO> burgerList;
+    private String burgerName;
     private String brandName;
     private String onion;
     private String lettuce;

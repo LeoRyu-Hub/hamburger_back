@@ -1,5 +1,7 @@
 package leo.example.hamburger.main.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,10 @@ public class mainService {
 
     public int insertBurger(burgerVO vo) throws Exception{
         return dao.insertBurger(vo);
+    }
+
+    public List<burgerVO> selectBurger(burgerVO vo) throws Exception{
+        return dao.selectBurger(vo);
     }
     
 }
