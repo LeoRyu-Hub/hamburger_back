@@ -13,9 +13,10 @@ React를 사용하여 동적이고 반응형인 UI를 구현하고 Spring Boot�
 
 
 # 🛠 사용 기술
-
-
-
+- React, CSS 3 (Frontend)
+- JSX (React Component)
+- Spring Boot (Backend)
+- Oracle (Database)
 
 # 📌 기능
 
